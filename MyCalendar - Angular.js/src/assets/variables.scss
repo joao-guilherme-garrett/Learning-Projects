@@ -1,0 +1,26 @@
+$gray_0: #333;
+$gray_1: rgba($gray_0, .75);
+$gray_2: rgba($gray_0, .4);
+$gray_3: rgba($gray_0, .15);
+$main_blue: rgb(50, 100, 180);
+$weather_background: rgb(120, 200, 250);
+$white: #FFF;
+// palette colors
+$red: rgb(222, 85, 85);
+$green: rgb(45, 175, 45);
+$blue: $main_blue;
+$purple: rgb(200, 50, 150);
+$yellow: rgb(230, 200, 10);
+$light-blue: rgb(25, 225, 225);
+$orange: rgb(255, 153, 0);
+// calidation colors
+$error: rgb(200, 0, 0);
+$palette: (
+    'red':$red,
+    'green':$green,
+    'blue':$blue,
+    'purple':$purple,
+    'yellow':$yellow,
+    'light-blue':$light-blue,
+    'orange':$orange,
+)
