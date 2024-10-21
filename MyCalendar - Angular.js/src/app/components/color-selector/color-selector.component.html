@@ -1,0 +1,9 @@
+<div class="color-selector__container">
+    <div class="color-selector__select" [ngClass]="value" (click)="active = !active">
+    </div>
+    
+    <div class="color-selector__options" *ngIf="active">
+        <div *ngFor="let color of palette" (click)="value = color; active = !active" [ngClass]="color" class="color-selector__color-option">
+        <div>
+    </div>
+</div>

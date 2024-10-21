@@ -1,0 +1,42 @@
+@import 'src/assets/variables.scss';
+
+.color-selector__select{
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    border: solid 1px $white;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    @each $color_name, $color in $palette {
+        &.#{$color_name}{
+            background: $color;
+        }
+    }
+}
+
+.color-selector__container{
+    position: relative;
+    width: 4rem;
+    height: 1.5rem;
+}
+
+.color-selector__color-option{
+    width: 100%;
+    height: 1.5rem;
+    border: 1px solid $white;
+    @each $color_name, $color in $palette {
+        &.#{$color_name}{
+            background: $color;
+        }
+    }
+}
+
+.color-selector__options{
+    z-index: 100;
+    background: $white;
+    position: absolute;
+    width: 100%;
+    top: 1.6rem;
+    box-shadow: 0 5px 15px 2px rgba(0,0,0,0.14), 0 5px 25px 4px rgba(0,0,0,0.12);
+    
+}

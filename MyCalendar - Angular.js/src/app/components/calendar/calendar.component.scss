@@ -1,0 +1,162 @@
+@import 'src/assets/variables.scss';
+
+.calendar__container{
+    display: grid;
+    grid-template-rows: 3rem 2rem 1fr;
+}
+
+// CALENDAR HEAD CLASSES
+.calendar__head{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    background: $main_blue;
+    .day-name{
+        color: $white;
+    }
+}
+
+.calendar__head-cell{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// CALENDAR BODY CLASSES
+.calendar__body{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(6,8.75rem);
+}
+
+.calendar__body-cell{
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    border-left: 1px solid $gray_0;
+    border-bottom: 1px solid $gray_0;
+    padding: 0.25rem;
+    &:nth-child(7n){
+        border-right: 1px solid $gray_0;    
+    }
+}
+
+.calendar__cell-events{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: auto;
+    width: 100%;
+    .reminder{
+        margin: 0.2rem;
+    }
+}
+
+.calendar__more-reminders{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-weight: bold;
+    width: 100%;
+    margin: 0.25rem;   
+    &:hover{
+        color: $main_blue;
+    }
+}
+
+.calendar__reminder-actions{
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 1.5rem;
+    width: 4rem;
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 1.5rem;
+        margin-left: .5rem;
+        font-size: 1.25rem;
+        color: $white;
+        background: $main_blue;
+    }
+}
+
+.calendar__cell-day{
+    font-weight: bold;
+    &.disabled{
+        color: $gray_2
+    }
+}
+
+// CALENDAR MONTHS CLASSES
+.calendar__months{
+    background: $main_blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.calendar__months-current{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $white;
+    font-size: 1.75rem;
+}
+
+.calendar__months-selector{
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $white;
+    font-size: 2rem;
+    margin: 0 2rem;
+}
+
+// CALENDAR OVERLAY CLASSES
+.calendar__reminder-overlay{
+    overflow: hidden;
+    position: fixed;
+    width: 350px;
+    height: 325px;
+    border-radius: 0.5rem;
+    border: 1px solid $gray_3;
+    background: $white;
+    box-shadow: 0 5px 15px 2px rgba(0,0,0,0.14), 0 5px 25px 4px rgba(0,0,0,0.12);
+}
+
+.calendar__extended-reminders{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    .calendar__extended-reminders-head{
+        display: flex;
+        justify-content: space-between;
+        span{
+            font-weight: bold;
+            margin: 1rem;
+        }
+        .close{
+            cursor: pointer;
+        }
+    }
+    .reminders{
+        height: calc(100% - 3rem);
+        overflow-y: auto;
+        .reminder{
+            padding: .5rem 1rem;
+            width: 100%;
+        }
+    }
+}

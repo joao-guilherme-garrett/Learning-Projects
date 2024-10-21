@@ -1,0 +1,56 @@
+<div class="calendar__container">
+    <div class="calendar__months">
+        <span class="calendar__months-selector material-icons" (click)="change_month(-1)">keyboard_arrow_left</span>
+        <span class="calendar__months-current">{{current_month + 1}} - {{current_year}}</span>
+        <span class="calendar__months-selector material-icons" (click)="change_month(1)">keyboard_arrow_right</span>
+    </div>
+    <div class="calendar__head">
+        <div *ngFor="let day of days" class="calendar__head-cell">
+            <span class="day-name">{{day}}</span>
+        </div>
+    </div>
+    <div class="calendar__body">
+        <div *ngFor="let day of calendar_days" class="calendar__body-cell" (mouseover)="hovered_day = day.code" (mouseleave)="hovered_day = null">
+            <div class="calendar__cell-day" [class.disabled]="day.last_month || day.next_month">
+                {{day.date}}
+            </div>
+            <div class="calendar__cell-events">
+                <div class="calendar__reminder-actions">
+                    <span class="material-icons" *ngIf="hovered_day === day.code && (!day.next_month && !day.last_month)" (click)="open_add_reminder(day, $event)">add</span>
+                    <span class="material-icons" *ngIf="hovered_day === day.code && (!day.next_month && !day.last_month) && day.reminders?.length" (click)="clear_day_reminders(day)">delete</span>
+                </div>
+                <ng-container *ngIf="day.reminders">
+                    <ng-container *ngFor="let reminder of day.reminders; index as i">
+                        <div class="reminder" *ngIf="(i < 3 && day.reminders.length < 4) || i < 2 && day.reminders.length > 3">
+                            <reminder [reminder]="reminder" (click)="open_reminder(day, reminder, $event)"></reminder>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="day.reminders.length > 3">
+                        <span class="calendar__more-reminders" (click)="extend_reminders(day, $event)">
+                            {{day.reminders.length - 2}} more ...
+                        </span>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="calendar__reminder-overlay" *ngIf="_toggle_overlay" [ngStyle]="{top: _overlay_anchor.y, left: _overlay_anchor.x}">
+    <ng-container *ngIf="_overlay_mode === 'reminder_detail'">
+        <reminder-detail [day]="chosen_day" [reminder]="chosen_reminder" [edition]="_reminder_edition" (close)="close_reminder()"></reminder-detail>
+    </ng-container>
+    <ng-container *ngIf="_overlay_mode === 'extend_reminders'">
+        <div class="calendar__extended-reminders">
+            <div class="calendar__extended-reminders-head">
+                <span>All reminders of {{chosen_day.date | date:'MM-dd-yyyy'}}</span>
+                <span class="close material-icons" (click)="close_extend_reminders()">clear</span>
+            </div>
+            <div class="reminders">
+                <div class="reminder" *ngFor="let reminder of chosen_day.reminders">
+                    <reminder [reminder]="reminder" [long]="true" (click)="open_reminder(chosen_day, reminder, $event, false)"></reminder>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

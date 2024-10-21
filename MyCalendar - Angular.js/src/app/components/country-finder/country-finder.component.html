@@ -1,0 +1,9 @@
+<div class="country-finder__container">
+    <input class="country-finder__input" type="text" [(ngModel)]="text" placeholder="City" (ngModelChange)="search_countries()" [class.error]="invalid && touched">
+
+    <div class="country-finder__suggestions" *ngIf="active">
+        <div class="country-finder__option" *ngFor="let country of city_list" (click)="select_country(country)">
+            {{country.name}}, {{country.country}}
+        </div>
+    </div>
+</div>
