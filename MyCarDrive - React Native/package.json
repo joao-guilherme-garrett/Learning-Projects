@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "expo": "^51.0.21",
+    "react-native": "^0.74.3",
+    "react-native-gesture-handler": "^2.16.1",
+    "react-scripts": "^3.0.1"
+  },
+  "devDependencies": {
+    "metro": "^0.80.9"
+  }
+}
