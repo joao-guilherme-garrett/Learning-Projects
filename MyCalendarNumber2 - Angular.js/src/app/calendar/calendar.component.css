@@ -1,0 +1,68 @@
+/* .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  
+  .current-month {
+    color: black;
+  } */
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .month {
+    font-weight: bold;
+  }
+  
+  .calendar-body {
+    padding: 10px;
+  }
+  
+  .calendar-week {
+    display: flex;
+  }
+  
+  .calendar-day {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+    /* Weekend days styling */
+    background-color: #eee;
+  }
+  
+  .calendar-day:first-child,
+  .calendar-day:last-child {
+    /* Style the first and last day of the week */
+    background-color: #ddd;
+  }
+  
+  /* Empty days styling (outside current month) */
+  .calendar-day:not([day]) {
+    opacity: 0.5;
+  }
